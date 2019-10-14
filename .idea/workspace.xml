@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="997e9901-bb96-457c-93e8-7fdfbcdc1d39" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TuringMachineAnime.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TuringMachineAnime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TMS.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +29,9 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/TuringMachineSimulator" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sjtu.cool-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -59,7 +62,10 @@
       <updated>1570265547724</updated>
       <workItem from="1570265550063" duration="2197000" />
       <workItem from="1570373108452" duration="3337000" />
-      <workItem from="1570415532526" duration="30823000" />
+      <workItem from="1570415532526" duration="31088000" />
+      <workItem from="1570461022210" duration="874000" />
+      <workItem from="1571010767926" duration="27000" />
+      <workItem from="1571063404087" duration="3850000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1570438282473</created>
@@ -68,14 +74,39 @@
       <option name="project" value="LOCAL" />
       <updated>1570438282473</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller">
+      <created>1570459678498</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570459678498</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$/Desktop" />
+      <path value="$USER_HOME$/Desktop/TuringMachineSimulator" />
+    </ignored-roots>
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
   </component>
 </project>
