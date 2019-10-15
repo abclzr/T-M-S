@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="997e9901-bb96-457c-93e8-7fdfbcdc1d39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TuringMachineAnime.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TuringMachineAnime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -65,7 +62,8 @@
       <workItem from="1570415532526" duration="31088000" />
       <workItem from="1570461022210" duration="874000" />
       <workItem from="1571010767926" duration="27000" />
-      <workItem from="1571063404087" duration="3850000" />
+      <workItem from="1571063404087" duration="3996000" />
+      <workItem from="1571097295491" duration="1403000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1570438282473</created>
@@ -81,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570459678498</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add slider">
+      <created>1571067366073</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571067366073</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +112,7 @@
     </ignored-roots>
     <MESSAGE value="init" />
     <MESSAGE value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
+    <MESSAGE value="add slider" />
+    <option name="LAST_COMMIT_MESSAGE" value="add slider" />
   </component>
 </project>

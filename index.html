@@ -22,7 +22,7 @@
 
 
   <style>
-    .progress{position: relative; width:600px;margin:100px auto;}
+    .progress{position: relative; width:600px;margin: auto;}
 
   </style>
 </head>
@@ -49,27 +49,27 @@
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 
 
+  <div style="width: auto; margin: auto">
   <canvas id="canvas" width=1000, height=350>
     你的浏览器居然不支持Canvas？！赶快换一个吧！！
   </canvas>
-  <br>
-  <div class="btn-group" >
-    <button type="button" class="btn btn-secondary" onclick="settostep(0);"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
-    <button type="button" id='play' class="btn btn-secondary" onclick="autoplay();"><span id='icon' class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-    <button type="button" class="btn btn-secondary" onclick="pauseit(); nextstepAnimation();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
   </div>
   <br>
-
   <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60"
          aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
       <span class="sr-only">40% 完成</span>
     </div>
   </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary" onclick="settostep(0);"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
+    <button type="button" id='play' class="btn btn-secondary" onclick="autoplay();"><span id='icon' class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+    <button type="button" class="btn btn-secondary" onclick="pauseit(); nextstepAnimation();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+  </div>
+  <br>
 
 
 
-  <br><br>
 
   <script type = "text/javascript" src = "TuringMachineAnime.js">
   </script>
