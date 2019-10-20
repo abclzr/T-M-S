@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="997e9901-bb96-457c-93e8-7fdfbcdc1d39" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/semantic.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -63,7 +64,11 @@
       <workItem from="1570461022210" duration="874000" />
       <workItem from="1571010767926" duration="27000" />
       <workItem from="1571063404087" duration="3996000" />
-      <workItem from="1571097295491" duration="1403000" />
+      <workItem from="1571097295491" duration="1643000" />
+      <workItem from="1571131769147" duration="1096000" />
+      <workItem from="1571191071203" duration="1390000" />
+      <workItem from="1571298954152" duration="423000" />
+      <workItem from="1571561971801" duration="4327000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1570438282473</created>
@@ -86,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571067366073</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="need to set center">
+      <created>1571111092361</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571111092361</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +125,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
     <MESSAGE value="add slider" />
-    <option name="LAST_COMMIT_MESSAGE" value="add slider" />
+    <MESSAGE value="need to set center" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to set center" />
   </component>
 </project>
