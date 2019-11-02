@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="997e9901-bb96-457c-93e8-7fdfbcdc1d39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuringMachineAnime.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuringMachineAnime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +77,7 @@
       <workItem from="1572175000463" duration="10094000" />
       <workItem from="1572328488584" duration="4859000" />
       <workItem from="1572659434456" duration="922000" />
-      <workItem from="1572675126816" duration="1023000" />
+      <workItem from="1572675126816" duration="1957000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1570438282473</created>
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571566449946</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="perpare demo">
+      <created>1572676290142</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1572676290142</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +150,7 @@
     <MESSAGE value="add slider" />
     <MESSAGE value="need to set center" />
     <MESSAGE value="change display" />
-    <option name="LAST_COMMIT_MESSAGE" value="change display" />
+    <MESSAGE value="perpare demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="perpare demo" />
   </component>
 </project>

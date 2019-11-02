@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <title>Simulation Status - Simulators</title>
+  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/c3.css" rel="stylesheet">
+  <link href="/google-code-prettify/prettify.css" rel="stylesheet">
+  <link href="/css/layout.css?20151202v3" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Simulators</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+        <li><a href="/user/list"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+        <li><a href="/ai/upload"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload</a></li>
+      </ul>
+      <div class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <strong>123</strong> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/user/logout">Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<div class="container-fluid">
+
+
+
+  <h1>Simulation Status <small>TuringMachine of 123 (32)</small></h1>
+
+  <dl class="dl-horizontal">
+    <dt>Code Name</dt><dd>TuringMachine</dd>
+    <dt>User (Times of Submit)</dt><dd>123 (32)</dd>
+    <dt>Submit Date</dt><dd>2019-10-08 23:41:51</dd>
+
+    <dt>Status</dt><dd><span class="label label-success">Available</span></dd>
+
+  </dl>
+
+  <table width="auto" border="0" style="margin: auto">
+    <thead>
+    <tr>
+      <th id = "State" width="50%" style="text-align: center; font-size: 40px">
+        State:
+      </th>
+      <th id = "Step" width="50%" style="text-align: center; font-size: 40px">
+        Step:
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td colspan="2">
+        <canvas id="canvas" width=1000 height=350>
+          你的浏览器居然不支持Canvas？！赶快换一个吧！！
+        </canvas>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table width="auto" style="margin: auto">
+    <tbody>
+    <td style="width: 30%">
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" onclick="settostep(0);"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
+        <button type="button" id='play' class="btn btn-secondary" onclick="autoplay();"><span id='icon' class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-secondary" onclick="pauseit(); nextstepAnimation();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+      </div>
+    </td>
+    <td>
+      <div id="slider" class="progress" style="position: relative; width:600px; height:10px; margin: auto;" onclick="clickslider();">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+             aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: width 0s ease-in-out">
+          <span class="sr-only">40% 完成</span>
+        </div>
+      </div>
+      <canvas id="canvas3" width=600px height=6>
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      </canvas>
+    </td>
+    </tbody>
+  </table>
+
+
+  <h2>Build Infomation</h2>
+  <pre>3
+{&#39;q0&#39;, &#39;q1&#39;}
+q0
+q1
+6 q0
+7 [&#39;0&#39;, &#39;0&#39;] [&#39;0&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+8 [&#39;0&#39;, &#39;1&#39;] [&#39;0&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+9 [&#39;0&#39;, &#39;*&#39;] [&#39;0&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+10 [&#39;1&#39;, &#39;0&#39;] [&#39;1&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+11 [&#39;1&#39;, &#39;1&#39;] [&#39;1&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+12 [&#39;1&#39;, &#39;*&#39;] [&#39;1&#39;] [&#39;&gt;&#39;, &#39;&gt;&#39;] q0
+13 [&#39;*&#39;, &#39;0&#39;] [&#39;*&#39;] [&#39;-&#39;, &#39;-&#39;] q1
+14 [&#39;*&#39;, &#39;1&#39;] [&#39;*&#39;] [&#39;-&#39;, &#39;-&#39;] q1
+15 [&#39;*&#39;, &#39;*&#39;] [&#39;*&#39;] [&#39;-&#39;, &#39;-&#39;] q1
+17 q1
+{(&#39;q0&#39;, &#39;0 *&#39;): (&#39;q0&#39;, [&#39;0&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;]), (&#39;q0&#39;, &#39;1 1&#39;): (&#39;q0&#39;, [&#39;1&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;]), (&#39;q0&#39;, &#39;1 *&#39;): (&#39;q0&#39;, [&#39;1&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;]), (&#39;q0&#39;, &#39;* 0&#39;): (&#39;q1&#39;, [&#39;*&#39;], [&#39;-&#39;, &#39;-&#39;]), (&#39;q0&#39;, &#39;* 1&#39;): (&#39;q1&#39;, [&#39;*&#39;], [&#39;-&#39;, &#39;-&#39;]), (&#39;q0&#39;, &#39;0 1&#39;): (&#39;q0&#39;, [&#39;0&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;]), (&#39;q0&#39;, &#39;1 0&#39;): (&#39;q0&#39;, [&#39;1&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;]), (&#39;q0&#39;, &#39;* *&#39;): (&#39;q1&#39;, [&#39;*&#39;], [&#39;-&#39;, &#39;-&#39;]), (&#39;q0&#39;, &#39;0 0&#39;): (&#39;q0&#39;, [&#39;0&#39;], [&#39;&gt;&#39;, &#39;&gt;&#39;])}
+---SimulationProcess---
+    1029
+    432
+    *
+    qFirstRight [0, 0, 0]
+    1029
+    432
+    *
+    qFirstRight [1, 0, 1]
+    1029
+    432
+    *
+    qFirstRight [2, 0, 2]
+    1029
+    432
+    *
+    qFirstRight [3, 0, 3]
+    1029
+    432
+    *
+    qFirstRight [4, 0, 4]
+    1029
+    432
+    *
+    qSecondRight [4, 1, 5]
+    1029
+    432
+    *
+    qSecondRight [4, 2, 6]
+    1029
+    432
+    *
+    qSecondRight [4, 3, 7]
+    1029
+    432
+    *
+    qAdd [3, 2, 6]
+    1029
+    432
+    ******1
+    qAddAndCarry [2, 1, 5]
+    1029
+    432
+    *****61
+    qAdd [1, 0, 4]
+    1029
+    432
+    ****461
+    qAdd [0, -1, 3]
+    1029
+    432
+    ***1461
+    qAdd [-1, -2, 2]
+    1029
+    432
+    ***1461
+    qAccept [-1, -2, 2]
+</pre>
+
+
+  <h2>Source Code</h2>
+  <pre class="source-code prettyprint lang-cpp">2
+q0 q1
+q0
+q1
+1 1 1 0 0 1 1 1 0 0
+
+q0
+0 0 ; 0 ; &gt; &gt; ; q0
+0 1 ; 0 ; &gt; &gt; ; q0
+0 * ; 0 ; &gt; &gt; ; q0
+1 0 ; 1 ; &gt; &gt; ; q0
+1 1 ; 1 ; &gt; &gt; ; q0
+1 * ; 1 ; &gt; &gt; ; q0
+* 0 ; * ; - - ; q1
+* 1 ; * ; - - ; q1
+* * ; * ; - - ; q1
+
+q1</pre>
+
+
+</div>
+<div class="footer" role="footer">
+  <p><small>Powered by <em><a href="https://github.com/abcdabcd987/p2dv.in">p2dv.in</a></em> &copy; Lequn Chen</small></p>
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/js/d3.min.js"></script>
+<script src="/js/c3.min.js"></script>
+<script src="/js/rating.js?20141217"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<script>
+    ratingChart.setup("5d9cae3f1cd5735f57374bdd/rating.json");
+    prettyPrint();
+</script>
+<script src = "TuringMachineAnime.js"></script>
+
+</body>
+</html>
