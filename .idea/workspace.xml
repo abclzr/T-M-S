@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="997e9901-bb96-457c-93e8-7fdfbcdc1d39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/semantic.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuringMachineAnime.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuringMachineAnime.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,6 +18,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -26,6 +28,7 @@
   <component name="ProjectId" id="1RmHrDUNMK72QKejottybmyWE5O" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sjtu.cool-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -68,7 +71,15 @@
       <workItem from="1571131769147" duration="1096000" />
       <workItem from="1571191071203" duration="1390000" />
       <workItem from="1571298954152" duration="423000" />
-      <workItem from="1571561971801" duration="4327000" />
+      <workItem from="1571561971801" duration="16359000" />
+      <workItem from="1571616099488" duration="3727000" />
+      <workItem from="1571713947932" duration="1279000" />
+      <workItem from="1571730694777" duration="1999000" />
+      <workItem from="1571903917407" duration="843000" />
+      <workItem from="1572175000463" duration="10094000" />
+      <workItem from="1572328488584" duration="4859000" />
+      <workItem from="1572659434456" duration="922000" />
+      <workItem from="1572675126816" duration="1023000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1570438282473</created>
@@ -98,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571111092361</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="change display">
+      <created>1571566449946</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571566449946</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +144,7 @@
     <MESSAGE value="finished &quot;pre&quot;&#10;need to add timeline and speedcontroller" />
     <MESSAGE value="add slider" />
     <MESSAGE value="need to set center" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to set center" />
+    <MESSAGE value="change display" />
+    <option name="LAST_COMMIT_MESSAGE" value="change display" />
   </component>
 </project>

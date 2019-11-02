@@ -1,37 +1,95 @@
 
+window.buildinfo = document.querySelector("div.container-fluid pre").innerHTML;
+window.k = Number(buildinfo.match(/[\d]+\n/));
+processinfo = buildinfo.substr(buildinfo.search(/---SimulationProcess---/) + "---SimulationProcess---".length);
 window.blockwidth = 50;
 window.innerblockwidth = 44;
-window.startline = 100;
+window.startline = 20;
 window.interline = 100;
 window.leftmost = 0;
 window.rightmost = 1000;
 window.stepframes = 0.05;
-window.k = 2;
 window.pnow = [];
 window.stepnow = 0;
 window.autoplaying = false;
 window.playing = false;
-const canvas = document.getElementById('canvas');
-/* 获得 2d 上下文对象 */
-const ctx = canvas.getContext('2d');
+window.framesPerAction = 25;
 
+function abs(x) {
+  return x < 0 ? -x : x;
+}
+
+dx = [];
+for (i = 0; i < framesPerAction; ++i)
+  dx[i] = 1 / (1 + Math.sqrt(Math.sqrt(abs((i / 12) - 1))));
+
+for (i = 1; i < framesPerAction; ++i)
+  dx[i] = dx[i] + dx[i - 1];
+
+dxmax = dx[framesPerAction - 1];
+
+for (i = 0; i < framesPerAction; ++i)
+  dx[i] /= dxmax;
+
+/*
+$(".container-fluid>.dl-horizontal").after('  <table width="auto" border="0" style="margin: auto">\n' +
+    '    <thead>\n' +
+    '      <tr>\n' +
+    '        <th id = "State" width="50%" style="text-align: center; font-size: 40px">\n' +
+    '          State:\n' +
+    '        </th>\n' +
+    '        <th id = "Step" width="50%" style="text-align: center; font-size: 40px">\n' +
+    '          Step:\n' +
+    '        </th>\n' +
+    '      </tr>\n' +
+    '    </thead>\n' +
+    '    <tbody>\n' +
+    '      <tr>\n' +
+    '        <td colspan="2">\n' +
+    '          <canvas id="canvas" width=1000 height=350>\n' +
+    '          你的浏览器居然不支持Canvas？！赶快换一个吧！！\n' +
+    '          </canvas>\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '     </tbody>\n' +
+    '  </table>\n' +
+    '  <table width="auto" style="margin: auto">\n' +
+    '    <tbody>\n' +
+    '      <td style="width: 30%">\n' +
+    '        <div class="btn-group">\n' +
+    '          <button type="button" class="btn btn-secondary" onclick="settostep(0);"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>\n' +
+    '          <button type="button" id=\'play\' class="btn btn-secondary" onclick="autoplay();"><span id=\'icon\' class="glyphicon glyphicon-play" aria-hidden="true"></span></button>\n' +
+    '          <button type="button" class="btn btn-secondary" onclick="pauseit(); nextstepAnimation();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>\n' +
+    '        </div>\n' +
+    '      </td>\n' +
+    '      <td>\n' +
+    '        <div class="progress" style="position: relative; width:600px;margin: auto;">\n' +
+    '          <div class="progress-bar" role="progressbar" aria-valuenow="60"\n' +
+    '               aria-valuemin="0" aria-valuemax="100" style="width: 0%;">\n' +
+    '            <span class="sr-only">40% 完成</span>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </td>\n' +
+    '    </tbody>\n' +
+    '  </table>\n');
+*/
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const canvas3 = document.getElementById('canvas3');
+const ctx3 = canvas3.getContext('2d');
 
 $("#canvas").height = startline + k * interline;
+
 function TMState(str, state, pointer) {
   this.str = str;
   this.state = state;
   this.pointer = pointer;
 }
 
-function drawstate(ss) {
-  var h1 = 10;
-  var tmpl = (leftmost + rightmost) / 2;
-  ctx.clearRect(0, 0, rightmost, startline);
-  ctx.fillStyle = "#000000";
-  ctx.font = "30px Consolas";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "top";
-  ctx.fillText('State: '.concat(ss).concat('   step: ').concat(stepnow.toString()), tmpl, h1);
+function drawstate(ss, snow) {
+  $("#State").html("State:".concat(ss));
+  $("#Step").html("Step:".concat(snow.toString()));
 }
 
 function drawtape(st, str, pt) {
@@ -43,7 +101,7 @@ function drawtape(st, str, pt) {
   ctx.fillStyle = "#EBEBEB";
   ctx.fillRect(leftmost, h1, rightmost - leftmost, blockwidth);
 
-  var tl = tmpl - (pt - 1) * blockwidth;
+  var tl = tmpl - pt * blockwidth;
   while (tl > 0) tl -= blockwidth;
   while (tl < rightmost) {
     ctx.fillStyle = "#B2DFEE";
@@ -51,7 +109,7 @@ function drawtape(st, str, pt) {
     tl += blockwidth;
   }
 
-  tl = (leftmost + rightmost) / 2 - (pt - 1) * blockwidth;
+  tl = (leftmost + rightmost) / 2 - pt * blockwidth;
   var len = str.length; var i = 0;
   for (i = 0; i < len; ++i) {
     if (str.charAt(i) !== '*') {
@@ -76,89 +134,41 @@ function drawtape(st, str, pt) {
   ctx.stroke();
 }
 
-log = ["1001",
-  "*",
-  "qCopy", [1, 1],
-  "1001",
-  "1",
-  "qCopy", [2, 2],
-  "1001",
-  "10",
-  "qCopy", [3, 3],
-  "1001",
-  "100",
-  "qCopy", [4, 4],
-  "1001",
-  "1001",
-  "qCopy", [5, 5],
-  "1001",
-  "1001",
-  "qReturn", [5, 4],
-  "1001",
-  "1001",
-  "qReturn", [5, 3],
-  "1001",
-  "1001",
-  "qReturn", [5, 2],
-  "1001",
-  "1001",
-  "qReturn", [5, 1],
-  "1001",
-  "1001",
-  "qReturn", [5, 0],
-  "1001",
-  "1001",
-  "qTest", [4, 1],
-  "1001",
-  "1001",
-  "qTest", [3, 2],
-  "1001",
-  "1001",
-  "qTest", [2, 3],
-  "1001",
-  "1001",
-  "qTest", [1, 4],
-  "1001",
-  "1001",
-  "qCorrect", [0, 5]
-]
+//process log
+processlen = processinfo.length;
+tmp = 0;
+log = [];
+while (tmp < processlen) {
+  while ((processinfo.charAt(tmp) === ' ' || processinfo.charAt(tmp) === '\n' || processinfo.charAt(tmp) === ']') && (tmp < processlen)) tmp++;
+  if (tmp >= processlen) break;
+  if (processinfo.charAt(tmp) !== '[') {
+    str = "";
+    while (processinfo.charAt(tmp) !== ' ' && processinfo.charAt(tmp) !== '\n' && tmp < processlen) {
+      str = str + processinfo.charAt(tmp);
+      ++tmp;
+    }
+    log.push(str);
+    // console.log(str);
+  } else {
+    ++tmp;
+    ary = [];
+    while (tmp < processlen) {
+      str = "";
+      while (processinfo.charAt(tmp) !== ',' && processinfo.charAt(tmp) !== ' ' && processinfo.charAt(tmp) !== ']' && tmp < processlen) {
+        str = str + processinfo.charAt(tmp);
+        ++tmp;
+      }
+      ary.push(Number(str));
+      while ((processinfo.charAt(tmp) === ' ' || processinfo.charAt(tmp) === ',') && (tmp < processlen)) tmp++;
+      if (processinfo.charAt(tmp) === ']' || tmp >= processlen) break;
+    }
+    log.push(ary);
+    // console.log(ary);
+  }
+}
 
-/*
-log = ["1110011100",
-    "*",
-    "q0", [1, 1],
-    "1110011100",
-    "1",
-    "q0", [2, 2],
-    "1110011100",
-    "11",
-    "q0",[3, 3],
-    "1110011100",
-    "111",
-    "q0",[4, 4],
-    "1110011100",
-    "1110",
-    "q0",[5, 5],
-    "1110011100",
-    "11100",
-    "q0",[6, 6],
-    "1110011100",
-    "111001",
-    "q0",[7, 7],
-    "1110011100",
-    "1110011",
-    "q0",[8, 8],
-    "1110011100",
-    "11100111",
-    "q0",[9, 9],
-    "1110011100",
-    "111001110",
-    "q0",[10, 10],
-    "1110011100",
-    "1110011100",
-    "q1",[10, 10]
-];
-*/
+window.SimulationLog = log;
+
 var stateary = []; var j, str, state, pointer, totstate = 0;
 for (i = 0; i < log.length; i += k + 2) {
   str = [];
@@ -169,15 +179,36 @@ for (i = 0; i < log.length; i += k + 2) {
   ++totstate;
 }
 
+endstate = totstate - 1;
+
+coor = [];
+for (i = 0; i < totstate; ++i)
+  coor[i] = i * 600 / (totstate - 1);
+coor[0] += 1;
+coor[totstate - 1] -= 1;
+
 //init
+canvas.setAttribute("height", (startline+(k)*interline).toString());
 for (i = 0; i < k; ++i) {
   drawtape(startline + interline * i, stateary[0].str[i], stateary[0].pointer[i]);
   pnow[i] = stateary[0].pointer[i];
 }
-drawstate(stateary[0].state);
+drawstate(stateary[0].state, 0);
+setProcess(0);
 stepnow = 0;
 
+window.canvaslinewidth = 1;
+
+for (i = 0; i < totstate; ++i) {
+  ctx3.moveTo(coor[i], 0);
+  ctx3.lineTo(coor[i], canvas3.height);
+  ctx3.strokeStyle = "black";
+  ctx3.lineWidth = canvaslinewidth;
+  ctx3.stroke();
+}
+
 function settostep(kth) {
+  playing = false;
   autoplaying = false;
   $('#play').attr('onclick', 'autoplay();');
   $('#icon').attr('class', 'glyphicon glyphicon-play');
@@ -190,24 +221,28 @@ function settostep(kth) {
     pnow[j] = stateary[kth].pointer[j];
     drawtape(startline + j * interline, stateary[kth].str[j], pnow[j]);
   }
+  drawstate(stateary[kth].state, kth);
   setProcess(kth);
 }
 
 function endAnimation() {
+  pauseit();
 }
 
 function nextstepAnimation() {
   if (playing) return;
   var remainframe;
   function step() {
-    if (remainframe - stepframes > 0) {
-      remainframe -= stepframes;
+    if (playing === false) return;
+    if (remainframe < 25) {
       for (j = 0; j < k; ++j) {
-        if (Math.abs(pnow[j] - stateary[stepnow].pointer[j]) < stepframes) pnow[j] = stateary[stepnow].pointer[j];
-        else if (pnow[j] < stateary[stepnow].pointer[j]) pnow[j] += stepframes;
-        else if (pnow[j] > stepframes) pnow[j] -= stepframes;
+        if(stateary[stepnow - 1].pointer[j] === stateary[stepnow].pointer[j]) pnow[j] = stateary[stepnow - 1].pointer[j];
+        else if (stateary[stepnow - 1].pointer[j] < stateary[stepnow].pointer[j]) pnow[j] = stateary[stepnow - 1].pointer[j] + dx[remainframe];
+        else if (stateary[stepnow - 1].pointer[j] > stateary[stepnow].pointer[j]) pnow[j] = stateary[stepnow - 1].pointer[j] - dx[remainframe];
         drawtape(startline + j * interline, stateary[stepnow].str[j], pnow[j]);
       }
+      setProcess(stepnow - 1 + dx[remainframe]);
+      remainframe++;
       requestAnimationFrame(step);
       return;
     }
@@ -215,20 +250,20 @@ function nextstepAnimation() {
       pnow[j] = stateary[stepnow].pointer[j];
       drawtape(startline + j * interline, stateary[stepnow].str[j], pnow[j]);
     }
+    setProcess(stepnow);
     playing = false;
     if (autoplaying)
-      setTimeout(function () {nextstepAnimation();}, 500);
+      setTimeout(function () {if (autoplaying) nextstepAnimation();}, 500);
   }
-  if (stepnow >= totstate - 1) {
+  if (stepnow >= endstate) {
     endAnimation();
     return;
   }
   ++stepnow;
-  drawstate(stateary[stepnow].state);
-  remainframe = 1;
+  drawstate(stateary[stepnow].state, stepnow);
+  remainframe = 0;
   playing = true;
   requestAnimationFrame(step);
-  setProcess(stepnow);
 }
 
 function autoplay() {
@@ -251,45 +286,11 @@ function setProcess(kth) {
   $('.progress-bar').css("width", (kth * 100 / (totstate - 1)).toString().concat("%"));
 }
 
-/*
-$(function(){
-  var tag = false,ox = 0,left = 0,bgleft = 0;
-  $('.progress_btn').mousedown(function(e) {
-    ox = e.pageX - left;
-    tag = true;
-  });
+sliderele = document.getElementById('slider');
 
-  $(document).mouseup(function() {
-    tag = false;
-  });
-
-  $('.progress').mousemove(function(e) {//����ƶ�
-    if (tag) {
-      left = e.pageX - ox;
-      if (left <= 0) {
-        left = 0;
-      }else if (left > 300) {
-        left = 300;
-      }
-      $('.progress_btn').css('left', left);
-      $('.progress_bar').width(left);
-      $('.text').html(parseInt((left/300)*100) + '%');
-    }
-  });
-
-  $('.progress_bg').click(function(e) {//�����
-    if (!tag) {
-      bgleft = $('.progress_bg').offset().left;
-      left = e.pageX - bgleft;
-      if (left <= 0) {
-        left = 0;
-      }else if (left > 300) {
-        left = 300;
-      }
-      $('.progress_btn').css('left', left);
-      $('.progress_bar').animate({width:left},300);
-      $('.text').html(parseInt((left/300)*100) + '%');
-    }
-  });
-});
-*/
+function clickslider(event) {
+  var e = event || window.event;
+  x = (e.screenX - sliderele.offsetLeft) / sliderele.clientWidth * (totstate - 1);
+  if (x - Math.floor(x) < 0.5) settostep(Math.floor(x));
+  else settostep(Math.floor(x) + 1);
+}
